@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=https://goreleaser.com/static/schema.json
+project_name: cpm
+before:
+  hooks:
+    # You may remove this if you don't use go modules.
+    - go mod tidy
+    # you may remove this if you don't need go generate
+    - go generate ./...
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+nfpms:
+  -
+    package_name: cpm
+    vendor: COZ Inc.
+    homepage: https://github.com/CityOfZion/
+    maintainer: COZ
+    description: |-
+      NEO Contract Package Manager
+    license: MIT
+    formats:
+      - apk
+      - deb
+      - rpm
+      - archlinux
+
+# OSX homebrew tap
+brews:
+  -
+    repository:
+      owner: CityOfZion
+      name: homebrew-tap
+    homepage: https://github.com/CityOfZion/cpm
+    description: NEO Blockchain Contract Package Manager
+    skip_upload: false
