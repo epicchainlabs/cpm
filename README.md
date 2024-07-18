@@ -13,7 +13,7 @@ Download the binary from the releases page and place it somewhere on your path, 
 
 ## OSX (brew)
 ```shell
-brew install CityOfZion/tap/cpm
+brew install epicchainlabs/tap/cpm
 ```
 
 ## Windows (Chocolatey)
