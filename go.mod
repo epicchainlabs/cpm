@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/iancoleman/strcase v0.2.0
-	github.com/nspcc-dev/neo-go v0.105.1
+	github.com/epicchainlabs/epicchain-go v0.105.1
 	github.com/sirupsen/logrus v1.9.0
 	github.com/stretchr/testify v1.8.4
 	github.com/urfave/cli/v2 v2.25.7

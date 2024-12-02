@@ -45,7 +45,7 @@ It has 4 major sections which will be described in detail later on
 * `download` - (Optional) overrides the `contract-download` setting in `defaults` to download a contract to the local chain. Must be a bool value.
 
 # tools
-Currently `neo-express` is the only tool that supports downloading contracts. An [issue](https://github.com/nspcc-dev/neo-go/issues/2406) exists for `neo-go` to add download support.
+Currently `neo-express` is the only tool that supports downloading contracts. An [issue](https://github.com/epicchainlabs/epicchain-go/issues/2406) exists for `neo-go` to add download support.
 For on-chain SDK generation `C#`, `Java`, `Golang` and `Python` are supported. For off-chain SDK generation `Java`, `Golang`, `ts` and `Python` are supported.
 
 Each tool must specify the following 2 keys

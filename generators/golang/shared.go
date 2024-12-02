@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/nspcc-dev/neo-go/pkg/smartcontract/binding"
+	"github.com/epicchainlabs/epicchain-go/pkg/smartcontract/binding"
 
 	log "github.com/sirupsen/logrus"
 )

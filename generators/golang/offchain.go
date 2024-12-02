@@ -1,8 +1,8 @@
 package golang
 
 import (
-	"github.com/nspcc-dev/neo-go/pkg/smartcontract/binding"
-	"github.com/nspcc-dev/neo-go/pkg/smartcontract/rpcbinding"
+	"github.com/epicchainlabs/epicchain-go/pkg/smartcontract/binding"
+	"github.com/epicchainlabs/epicchain-go/pkg/smartcontract/rpcbinding"
 )
 
 func goOffChainConfig() binding.Config {
