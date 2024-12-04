@@ -41,7 +41,7 @@ cpm --log-level DEBUG run
 ### Download a single contract or contract manifest
 ```shell
 cpm download contract -c 0x4380f2c1de98bb267d3ea821897ec571a04fe3e0 -n mainnet
-cpm download manifest -c 0x4380f2c1de98bb267d3ea821897ec571a04fe3e0 -N https://mainnet1.epicchain.coz.io:443
+cpm download manifest -c 0x4380f2c1de98bb267d3ea821897ec571a04fe3e0 -N https://mainnet1-seed.epic-chain.org:10111
 ```
 
 ### Build SDK from local manifest
