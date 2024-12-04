@@ -8,8 +8,8 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/iancoleman/strcase"
 	"github.com/epicchainlabs/epicchain-go/pkg/smartcontract"
+	"github.com/iancoleman/strcase"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -27,9 +27,9 @@ import (
 			import { SampleContract } from './SampleContract'
 			const sampleContract = new SampleContract({
 				SampleContract.SCRIPT_HASH,
-				invoker: await NeonInvoker.init({ rpcAddress: 'https://mainnet1.neo.coz.io:443' }),
+				invoker: await NeonInvoker.init({ rpcAddress: 'https://mainnet1-seed.epic-chain.org:10111' }),
 				parser: NeonParser,
-				eventListener: new NeonEventListener('https://mainnet1.neo.coz.io:443')
+				eventListener: new NeonEventListener('https://mainnet1-seed.epic-chain.org:10111')
 			})
 
 			const txId = sampleContract.func1()

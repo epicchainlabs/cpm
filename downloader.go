@@ -3,11 +3,12 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"github.com/epicchainlabs/epicchain-go/pkg/util"
-	log "github.com/sirupsen/logrus"
 	"os/exec"
 	"runtime"
 	"strings"
+
+	"github.com/epicchainlabs/epicchain-go/pkg/util"
+	log "github.com/sirupsen/logrus"
 )
 
 type Downloader interface {
@@ -30,7 +31,7 @@ func NewNeoExpressDownloader(configPath string) Downloader {
 		err := cmd.Run()
 		if err != nil {
 			log.Fatal("Could not find 'neoxp' executable in $PATH. Please install neoxp globally using " +
-				"'dotnet tool install Neo.Express -g'" +
+				"'dotnet tool install EpicChain.Express -g'" +
 				" or specify the 'executable-path' in cpm.yaml in the neo-express tools section")
 		}
 	} else {

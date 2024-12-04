@@ -6,8 +6,8 @@ import (
 	"os"
 	"text/template"
 
-	"github.com/iancoleman/strcase"
 	"github.com/epicchainlabs/epicchain-go/pkg/smartcontract"
+	"github.com/iancoleman/strcase"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -22,11 +22,11 @@ const csharpSrcTmpl = `
 		} 
 {{- end -}}
 using Neo;
-using Neo.Cryptography.ECC;
-using Neo.SmartContract;
-using Neo.SmartContract.Framework;
-using Neo.SmartContract.Framework.Services;
-using Neo.SmartContract.Framework.Attributes;
+using EpicChain.Cryptography.ECC;
+using EpicChain.SmartContract;
+using EpicChain.SmartContract.Framework;
+using EpicChain.SmartContract.Framework.Services;
+using EpicChain.SmartContract.Framework.Attributes;
 
 namespace cpm {
     public class {{ .ContractName }}  {
