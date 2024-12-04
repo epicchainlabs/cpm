@@ -28,11 +28,11 @@ changelog:
 nfpms:
   -
     package_name: cpm
-    vendor: COZ Inc.
-    homepage: https://github.com/CityOfZion/
-    maintainer: COZ
+    vendor: EpicChain Labs.
+    homepage: https://github.com/epicchainlabs/
+    maintainer: EpicChain
     description: |-
-      NEO Contract Package Manager
+      EpicChain Contract Package Manager
     license: MIT
     formats:
       - apk
@@ -44,8 +44,8 @@ nfpms:
 brews:
   -
     repository:
-      owner: CityOfZion
+      owner: EpicChain Labs
       name: homebrew-tap
-    homepage: https://github.com/CityOfZion/cpm
-    description: NEO Blockchain Contract Package Manager
+    homepage: https://github.com/epicchainlabs/cpm
+    description: EpicChain Blockchain Contract Package Manager
     skip_upload: false
