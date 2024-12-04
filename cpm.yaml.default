@@ -51,11 +51,10 @@ tools:
 networks:
   - label: mainnet
     hosts:
-      - 'https://mainnet1.neo.coz.io:443'
-      - 'http://seed1.neo.org:10332'
+      - 'http://mainnet1-seed.epic-chain.org:10111'
   - label: testnet
     hosts:
-      - 'https://testnet1.neo.coz.io:443'
+      - 'https://testnet1-seed.epic-chain.org:20111'
   - label: priv
     hosts:
-      - 'http://127.0.0.1:10332'
+      - 'http://127.0.0.1:10111'
