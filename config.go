@@ -58,12 +58,12 @@ type CPMConfig struct {
 	Defaults  Defaults         `yaml:"defaults"`
 	Contracts []ContractConfig `yaml:"contracts"`
 	Tools     struct {
-		NeoExpress struct {
+		EpicChainExpress struct {
 			CanGenerateSDK      bool    `yaml:"canGenerateSDK"`
 			CanDownloadContract bool    `yaml:"canDownloadContract"`
 			ExecutablePath      *string `yaml:"executable-path,omitempty"`
 			ConfigPath          string  `yaml:"config-path"`
-		} `yaml:"neo-express"`
+		} `yaml:"epicchain-express"`
 	} `yaml:"tools"`
 	Networks []struct {
 		Label string   `yaml:"label"`

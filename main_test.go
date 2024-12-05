@@ -22,7 +22,7 @@ func Test_DownloadContract(t *testing.T) {
 	t.Cleanup(func() { log.SetOutput(os.Stderr) })
 
 	c := util.Uint160{}
-	h := []string{"127.0.0.1:10333"}
+	h := []string{"127.0.0.1:10112"}
 
 	t.Run("invalid contract hash should fail", func(t *testing.T) {
 		err := downloadContract(nil, "invalidhash", nil, false, true)
@@ -48,7 +48,7 @@ func Test_DownloadContract(t *testing.T) {
 
 	t.Run("first host fails second host succeeds", func(t *testing.T) {
 		logs := NewMockLogs(t)
-		failHost := "127.0.0.1:10333"
+		failHost := "127.0.0.1:10112"
 		successHost := "127.0.0.2:20333"
 		hosts := []string{failHost, successHost}
 
@@ -98,7 +98,7 @@ func Test_DownloadManifest(t *testing.T) {
 		srv := NewTestRpcServer(t, []RpcResponse{contractStateResponse})
 		defer srv.Close()
 
-		failHost := "http://127.0.0.1:10333"
+		failHost := "http://127.0.0.1:10112"
 		successHost := fmt.Sprintf("http://%s", srv.Listener.Addr().String())
 		hosts := []string{failHost, successHost}
 
@@ -217,12 +217,12 @@ type MockRpcServer struct {
 }
 
 func NewMockRpcServer() *MockRpcServer {
-	// neo-go RPC clients call the follow methods during initialisation
+	// epicchain-go RPC clients call the follow methods during initialisation
 	return &MockRpcServer{
 		responses: []RpcResponse{
 			RpcResponse{
 				"getversion",
-				"{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"tcpport\":10333,\"wsport\":10334,\"nonce\":1460779089,\"useragent\":\"/Neo:3.6.0/\",\"protocol\":{\"addressversion\":53,\"network\":860833102,\"validatorscount\":7,\"msperblock\":15000,\"maxtraceableblocks\":2102400,\"maxvaliduntilblockincrement\":5760,\"maxtransactionsperblock\":512,\"memorypoolmaxtransactions\":50000,\"initialgasdistribution\":5200000000000000}}}",
+				"{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"tcpport\":10112,\"wsport\":10113,\"nonce\":2083236893,\"useragent\":\"/EpicChain:1.0.0/\",\"protocol\":{\"addressversion\":76,\"network\":860833102,\"validatorscount\":1,\"msperblock\":15000,\"maxtraceableblocks\":2102400,\"maxvaliduntilblockincrement\":5760,\"maxtransactionsperblock\":512,\"memorypoolmaxtransactions\":50000,\"initialgasdistribution\":50000000000000000}}}",
 			},
 			{
 				"getnativecontracts",

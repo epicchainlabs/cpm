@@ -53,18 +53,18 @@ Each tool must specify the following 2 keys
 * `canDownloadContract` - indicates if the tool can be used for downloading contracts. Must be a bool value.
 
 Other keys are tool specific
-* `neo-express`
-    * `express-path` - where to find the `neoxp` executable. Set to `null` if installed globally. Otherwise, specify the full path including the program name.
-    * `config-path` - where to find the `*.neo-express` configuration file of the target network. Must include the file name. i.e. `default.neo-express` if the file is in the root directory.
+* `epicchain-express`
+    * `express-path` - where to find the `epicchainxp` executable. Set to `null` if installed globally. Otherwise, specify the full path including the program name.
+    * `config-path` - where to find the `*.epicchain-express` configuration file of the target network. Must include the file name. i.e. `default.epicchain-express` if the file is in the root directory.
 
 Example
 
 ```yaml
-neo-express:
+epicchain-express:
   canGenerateSDK: false
   canDownloadContract: true
   executable-path: null
-  config-path: default.neo-express
+  config-path: default.epicchain-express
 ```
 
 # networks

@@ -96,7 +96,7 @@ func main() {
 							&cli.StringFlag{Name: "c", Usage: "Contract script hash", Required: true},
 							&cli.StringFlag{Name: "n", Usage: "Source network label. Searches cpm.yaml for the network by label to find the host", Required: false},
 							&cli.StringFlag{Name: "N", Usage: "Source network host", Required: false},
-							&cli.StringFlag{Name: "i", Usage: "Neo express config file", Required: false, DefaultText: "default.neo-express"},
+							&cli.StringFlag{Name: "i", Usage: "Neo express config file", Required: false, DefaultText: "default.epicchain-express"},
 							&cli.BoolFlag{Name: "s", Usage: "Save contract to the 'contracts' section of cpm.yaml", Required: false, Value: false, DisableDefaultText: true},
 						},
 						Action: handleCliDownloadContract,
@@ -234,8 +234,8 @@ func handleCliRun(cCtx *cli.Context) error {
 	LoadConfig()
 
 	var downloader Downloader
-	// for now we only support NeoExpress
-	downloader = NewNeoExpressDownloader(cfg.Tools.NeoExpress.ConfigPath)
+	// for now we only support EpicChainExpress
+	downloader = NewEpicChainExpressDownloader(cfg.Tools.EpicChainExpress.ConfigPath)
 
 	for _, c := range cfg.Contracts {
 		log.Infof("Processing contract '%s' (%s)", c.Label, c.ScriptHash.StringLE())
@@ -244,7 +244,7 @@ func handleCliRun(cCtx *cli.Context) error {
 		if *c.Download {
 			downloadSuccess := false
 			for _, host := range hosts {
-				log.Debugf("Attempting to download contract '%s' (%s) using NEOXP from network %s", c.Label, c.ScriptHash.StringLE(), host)
+				log.Debugf("Attempting to download contract '%s' (%s) using epicchainxp from network %s", c.Label, c.ScriptHash.StringLE(), host)
 				message, err := downloader.downloadContract(c.ScriptHash, host)
 				if err == nil {
 					log.Info(message)
@@ -297,8 +297,8 @@ func handleCliDownloadContract(cCtx *cli.Context) error {
 		return err
 	}
 
-	// for now, we only support NeoExpress
-	downloader := NewNeoExpressDownloader(configPath)
+	// for now, we only support EpicChainExpress
+	downloader := NewEpicChainExpressDownloader(configPath)
 	return downloadContract(hosts, contractHash, downloader, saveContract, false)
 }
 

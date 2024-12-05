@@ -21,7 +21,7 @@ const csharpSrcTmpl = `
 {{- range $arg := .Arguments -}}, {{ .Name -}} {{ else }}, new object[0]{{end}});
 		} 
 {{- end -}}
-using Neo;
+using EpicChain;
 using EpicChain.Cryptography.ECC;
 using EpicChain.SmartContract;
 using EpicChain.SmartContract.Framework;

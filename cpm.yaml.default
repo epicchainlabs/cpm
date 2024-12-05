@@ -1,7 +1,7 @@
 # settings that apply to all contracts unless explicitly overridden in the contracts section
 defaults:
   contract-source-network: mainnet
-  contract-destination: neo-express
+  contract-destination: epicchain-express
   contract-generate-sdk: false
   contract-download: true
   # settings related to SDK generation for on chain contracts
@@ -42,11 +42,11 @@ contracts:
     script-hash: '0xf05651bc505fd5c7d36593f6e8409932342f9085'
 # which tools are available for contract downloading and/or generating SDKs
 tools:
-  neo-express:
+  epicchain-express:
     canGenerateSDK: false
     canDownloadContract: true
     executable-path: null
-    config-path: default.neo-express
+    config-path: default.epicchain-express
 # list of networks with corresponding RPC server addresses to the networks used for source information downloading
 networks:
   - label: mainnet

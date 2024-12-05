@@ -15,51 +15,51 @@ type Downloader interface {
 	downloadContract(scriptHash util.Uint160, host string) (string, error)
 }
 
-type NeoExpressDownloader struct {
+type EpicChainExpressDownloader struct {
 	expressConfigPath *string
 }
 
-func NewNeoExpressDownloader(configPath string) Downloader {
-	executablePath := cfg.Tools.NeoExpress.ExecutablePath
+func NewEpicChainExpressDownloader(configPath string) Downloader {
+	executablePath := cfg.Tools.EpicChainExpress.ExecutablePath
 	if executablePath == nil {
 		var cmd *exec.Cmd
 		if runtime.GOOS == "darwin" {
-			cmd = exec.Command("bash", "-c", "neoxp -h")
+			cmd = exec.Command("bash", "-c", "epicchainxp -h")
 		} else {
-			cmd = exec.Command("neoxp", "-h")
+			cmd = exec.Command("epicchainxp", "-h")
 		}
 		err := cmd.Run()
 		if err != nil {
-			log.Fatal("Could not find 'neoxp' executable in $PATH. Please install neoxp globally using " +
+			log.Fatal("Could not find 'epicchainxp' executable in $PATH. Please install epicchainxp globally using " +
 				"'dotnet tool install EpicChain.Express -g'" +
-				" or specify the 'executable-path' in cpm.yaml in the neo-express tools section")
+				" or specify the 'executable-path' in cpm.yaml in the epicchain-express tools section")
 		}
 	} else {
 		// Verify path works by calling help (which has a 0 exit code)
 		cmd := exec.Command(*executablePath, "-h")
 		err := cmd.Run()
 		if err != nil {
-			log.Fatal(fmt.Errorf("could not find 'neoxp' executable in the configured executable-path: %w", err))
+			log.Fatal(fmt.Errorf("could not find 'epicchainxp' executable in the configured executable-path: %w", err))
 		}
 	}
-	return &NeoExpressDownloader{
+	return &EpicChainExpressDownloader{
 		expressConfigPath: &configPath,
 	}
 }
 
-func (ned *NeoExpressDownloader) downloadContract(scriptHash util.Uint160, host string) (string, error) {
-	// the name and arguments supplied to exec.Command differ slightly depending on the OS and whether neoxp is
+func (ned *EpicChainExpressDownloader) downloadContract(scriptHash util.Uint160, host string) (string, error) {
+	// the name and arguments supplied to exec.Command differ slightly depending on the OS and whether epicchainxp is
 	// installed globally. the following are the base arguments that hold for all scenarios
-	args := []string{"contract", "download", "-i", cfg.Tools.NeoExpress.ConfigPath, "--force", "0x" + scriptHash.StringLE(), host}
+	args := []string{"contract", "download", "-i", cfg.Tools.EpicChainExpress.ConfigPath, "--force", "0x" + scriptHash.StringLE(), host}
 
 	// global default
-	executable := "neoxp"
+	executable := "epicchainxp"
 
-	if cfg.Tools.NeoExpress.ExecutablePath != nil {
-		executable = *cfg.Tools.NeoExpress.ExecutablePath
+	if cfg.Tools.EpicChainExpress.ExecutablePath != nil {
+		executable = *cfg.Tools.EpicChainExpress.ExecutablePath
 	} else if runtime.GOOS == "darwin" {
 		executable = "bash"
-		tmp := append([]string{"neoxp"}, args...)
+		tmp := append([]string{"epicchainxp"}, args...)
 		args = []string{"-c", strings.Join(tmp, " ")}
 	}
 
@@ -68,8 +68,8 @@ func (ned *NeoExpressDownloader) downloadContract(scriptHash util.Uint160, host 
 	cmd.Stderr = &errOut
 	out, err := cmd.Output()
 	if err != nil {
-		return "[NEOXP]" + errOut.String(), err
+		return "[epicchainxp]" + errOut.String(), err
 	} else {
-		return "[NEOXP]" + string(out), nil
+		return "[epicchainxp]" + string(out), nil
 	}
 }
